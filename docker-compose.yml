@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:17
+    container_name: biz_db
+    environment:
+      POSTGRES_USER: biz
+      POSTGRES_PASSWORD: biz
+      POSTGRES_DB: biz
+    ports:
+      - "5432:5432"
+    volumes:
+      - biz_db:/var/lib/postgresql/data
+
+
+  web:
+    build: .
+    working_dir: /project
+    container_name: biz_api
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    volumes:
+      - ./app:/project/app
+      - ./alembic.ini:/project/alembic.ini
+      - ./alembic:/project/alembic
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  test_biz_db:
+  biz_db:
