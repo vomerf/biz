@@ -6,3 +6,4 @@ app = FastAPI()
 
 app.include_router(main_router)
 print('sds')
+print('sdjnn')
