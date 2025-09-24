@@ -5,5 +5,3 @@ from app.api.routers import main_router
 app = FastAPI()
 
 app.include_router(main_router)
-print('sds')
-print('sdjnn')
