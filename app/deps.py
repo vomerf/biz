@@ -42,3 +42,5 @@ async def current_superuser(current_user: User = Depends(get_current_user)) -> U
             detail="The user doesn't have enough privileges",
         )
     return current_user
+
+print('sdjh')
