@@ -44,3 +44,4 @@ async def current_superuser(current_user: User = Depends(get_current_user)) -> U
     return current_user
 
 print('sdjh')
+print('sdjh')
